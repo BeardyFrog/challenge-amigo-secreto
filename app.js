@@ -1,17 +1,17 @@
-let listaDeAmigos = [];
+let arrayAmigos = [];
 
-function criarListaDeAmigos(id, listaDeAmigos) {
+function criarListaDeAmigos(id, arrayAmigos) {
     let lista = document.getElementById(id);
     lista.innerHTML = '';
-    for (let i = 0; i < listaDeAmigos.length; i++) {
+    for (let i = 0; i < arrayAmigos.length; i++) {
         let itemLista = document.createElement('li');
-        itemLista.textContent = listaDeAmigos[i];
+        itemLista.textContent = arrayAmigos[i];
         lista.appendChild(itemLista);
     }
 }
 
 function limparCampo() {
-    amigo = document.querySelector('input');
+    let amigo = document.querySelector('input');
     amigo.value = '';
 }
 
@@ -21,14 +21,14 @@ function adicionarAmigo() {
     if (amigo === '') {
     alert ('Por favor insira um nome válido.'); 
 
-} else if (listaDeAmigos.includes(amigo)) {
+} else if (arrayAmigos.includes(amigo)) {
         alert ('Ops! Esse amigo já foi adicionado!');
     }
     
     else {
-        listaDeAmigos.push(amigo);
+        arrayAmigos.push(amigo);
         limparCampo();
-        criarListaDeAmigos('listaAmigos', listaDeAmigos);
+        criarListaDeAmigos('listaAmigos', arrayAmigos);
     }
         
 }
@@ -36,16 +36,22 @@ function adicionarAmigo() {
 
 
 function sortearAmigo() {
-    if (listaDeAmigos.length === 0) {
+    if (arrayAmigos.length === 0) {
         alert ('Insira amigos para o sorteio!');
     } else {
         criarListaDeAmigos('listaAmigos', []);
-        let indiceAmigoSorteado = Math.floor(Math.random() * listaDeAmigos.length);
+        let indiceAmigoSorteado = Math.floor(Math.random() * arrayAmigos.length);
         let campoAmigoSorteado = document.getElementById ('resultado');
-        campoAmigoSorteado.innerHTML = (`O amigo secreto sorteado foi: ${(listaDeAmigos[indiceAmigoSorteado])}!` )
+        campoAmigoSorteado.innerHTML = (`O amigo secreto sorteado foi: ${(arrayAmigos[indiceAmigoSorteado])}!` )
         
         
     }
+}
+
+function reiniciarSorteio() {
+    arrayAmigos = [];
+    criarListaDeAmigos('listaAmigos', arrayAmigos);
+    document.getElementById('resultado').innerHTML = '';
 }
 
 
