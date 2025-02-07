@@ -171,3 +171,22 @@ li {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+@media (max-width: 900px) {
+    .button-container {
+        flex-direction: column;
+    }
+    
+    .header-banner {
+        flex-direction: column;
+        padding: 5%;
+    }
+    .header-banner img {
+        width: 80%;
+        max-width: 300px;
+    }
+
+
+}
+    
+
